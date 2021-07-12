@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<div th:replace="commons.html::topper"></div>
+
+	<body>
+		<div class="main-page-wrapper">
+
+			<!-- ===================================================
+				Loading Transition
+			==================================================== -->
+			<div th:replace="commons.html::Loading"></div>
+
+
+
+			<!-- 
+			=============================================
+				Theme Main Menu
+			============================================== 
+			-->
+			<div th:replace="commons.html::main-menu"></div>
+			
+
+
+			<!-- 
+			=============================================
+				Theme Main Hero Banner
+			============================================== 
+			-->
+			<div class="main-hero-banner banner-sm d-flex align-items-center justify-content-center" style="background-image: url(images/banners/banner03.jpg);">
+				<div class="container">
+					<h1 data-aos="fade-up">加 入 我 们 一 起 旅 行</h1>
+				</div>
+			</div> <!-- /.main-hero-banner -->
+
+
+
+			<!-- 
+			=============================================
+				Contact Section
+			============================================== 
+			-->
+			<div class="contact Section mt-120 md-mt-80">
+				<div class="container">
+					<div class="theme-title-one text-center mb-60">
+						<h2>登 录</h2>
+
+					</div> <!-- /.theme-title-one -->
+					
+					<div class="signUp-form search-filter">
+						<form action="#" class="contact-form" method="post" th:action="@{/login}">
+							<h5>请 填 写 你 的 账 户 信 息</h5>
+							<a th:href="@{/register.html}" style="font-size:25px">若无账号，请先注册</a>
+
+							<hr class="pb-20">
+							<div class="row">
+								<div class="col-lg-6">
+									<div class="input-group-wrapper">
+										<label>姓 名</label>
+										<input type="text" placeholder="Last Name" name="username" required>
+										<label style="color:red" th:text="${msg}"></label>
+									</div> <!-- /.input-group-wrapper -->
+								</div>
+								<div class="col-lg-6">
+									<div class="input-group-wrapper">
+										<label>密 码</label>
+										<input type="password" placeholder="password" name="password" required>
+									</div> <!-- /.input-group-wrapper -->
+								</div>
+							</div>
+
+							<div class="mt-40"><button class="theme-main-button m-auto">Submit</button></div>
+						</form>
+					</div> <!-- /.signUp-form -->
+				</div> <!-- /.container -->
+			</div> <!-- /.contact Section -->
+
+
+
+
+
+
+
+
+			<!-- 
+			=============================================
+				Pledge People
+			============================================== 
+			-->
+			<div class="pledge-people-section mt-120">
+				<div class="container">
+					<div>
+						<div class="theme-title-one text-center pb-50">
+							<h2>Follow us on the road</h2>
+							<div class="row">
+								<div class="col-lg-11 m-auto">
+									<p>Through our various channels you can follow our travelers and local guide.</p>
+								</div>
+							</div>
+						</div> <!-- /.theme-title-one -->
+
+<!--						<ul class="social-icon d-flex justify-content-center">-->
+<!--							<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>-->
+<!--							<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>-->
+<!--							<li><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>-->
+<!--							<li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>-->
+<!--							<li><a href="#"><i class="fa fa-snapchat-ghost" aria-hidden="true"></i></a></li>-->
+<!--						</ul>-->
+					</div>
+				</div> <!-- /.container -->
+			</div> <!-- /.pledge-people-section -->
+
+
+
+			<!-- 
+			=============================================
+				Feature Banner
+			============================================== 
+			-->
+			<div class="feature-banner fancy-bg mt-110 md-mt-80" style="background-image: url(images/banners/homepage_footer.jpg);">
+				<div class="overlay pt-150 pb-100 md-pt-100 md-pb-80">
+					<div class="container text-center">
+						<h2 class="pb-40">Conact With us</h2>
+						<div class="row">
+							<div class="col-lg-8 m-auto">
+								<div class="d-sm-flex justify-content-between">
+									<a href="#" class="theme-main-button mt-10">Call us</a>
+									<a href="mailto:info@demo.com" class="theme-main-button mt-10">Email Us</a>
+									<a href="#" class="theme-main-button mt-10">Make enquiry</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div> <!-- /.overlay -->
+			</div> <!-- /.feature-banner -->
+
+
+
+			<!-- 
+			=============================================
+				Footer
+			============================================== 
+			-->
+			<div th:replace="commons.html::Footer"></div>
+
+
+
+
+			<div th:replace="commons.html::footerJs"></div>
+
+		</div> <!-- /.main-page-wrapper -->
+	</body>
+</html>

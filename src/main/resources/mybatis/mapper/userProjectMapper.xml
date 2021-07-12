@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caopeng.travel.mapper.UserProjectMapper">
+
+    <insert id="saveUserProject" parameterType="userProject">
+        insert into travel.user_project
+            (projectId,userID)
+            values
+            (#{projectId},#{userId});
+    </insert>
+
+    <delete id="deleteUserProject">
+        delete
+            from travel.user_project
+        where
+            user_project.projectId = #{projectId} and user_project.userID = #{userId}
+    </delete>
+
+    <select id="getUserIds" resultType="java.lang.Integer">
+        select userID from travel.user_project where user_project.projectId = #{projectId}
+    </select>
+
+
+</mapper>

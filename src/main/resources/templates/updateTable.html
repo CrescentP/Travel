@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div th:replace="commons.html::topper"></div>
+
+<body>
+		<div class="main-page-wrapper">
+
+			<!-- ===================================================
+				Loading Transition
+			==================================================== -->
+			<div th:replace="commons.html::Loading"></div>
+
+
+
+
+			<!-- ===================================================
+				Cart Form
+			==================================================== -->
+			<div class="cart-form">
+				<div class="container">
+					<div class="main-bg">
+						<form action="checkout.html" th:action="@{/updateTable}" method="post">
+							<h5>请填写你要更新的旅游项目</h5>
+							<p>Please fill in your details below to get started.</p>
+
+							<div class="row">
+								<div class="col-12">
+									<div class="input-wrapper">
+										<label for="">项目名</label>
+										<input type="text" th:placeholder="${project.getName()}" name="name">
+									</div>
+								</div>
+
+								<div class="col-12">
+									<div class="input-wrapper">
+										<label for="">目的地</label>
+										<input type="text" th:placeholder="${project.getDestination()}" name="destination">
+									</div>
+								</div>
+
+								<div class="col-12">
+									<div class="input-wrapper">
+										<label for="">每人预算</label>
+										<input type="text" th:placeholder="${project.getMoney()}" name="money">
+									</div>
+								</div>
+
+								<div class="col-12">
+									<div class="input-wrapper">
+										<label for="">开始时间时间</label>
+										<label for="" th:text="${#dates.format(project.getBegin(),'yyyy-MM-dd')}"></label>
+										<input type="date" name="begin" th:placeholder="${#dates.format(project.getBegin(),'yyyy-MM-dd')}">
+									</div>
+								</div>
+								<div class="col-12">
+									<div class="input-wrapper">
+										<label for="">结束时间</label>
+										<label for="" th:text="${#dates.format(project.getEnd(),'yyyy-MM-dd')}"></label>
+										<input type="date" name="end" >
+									</div>
+								</div>
+
+								<div class="col-12">
+									<div class="input-wrapper">
+										<label for="">详 情</label>
+										<textarea placeholder="旅 行 的 详 细 细 节" name="details" th:placeholder="${project.getDetails()}"></textarea>
+									</div>
+								</div>
+
+								<div><input type="hidden" name="principalId" th:value="${session.userSession.getId()}"></div>
+								<input type="hidden" name="id" th:value="${project.getId()}">
+								<div class="mt-40"><button class="theme-main-button m-auto">Submit</button></div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+
+			<div th:replace="commons.html::footerJs"></div>
+
+		</div> <!-- /.main-page-wrapper -->
+	</body>
+</html>

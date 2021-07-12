@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+	<div th:replace="commons.html::topper"></div>
+
+
+	<body>
+		<div class="main-page-wrapper">
+
+			<!-- ===================================================
+				Loading Transition
+			==================================================== -->
+			<div th:replace="commons.html::Loading"></div>
+
+
+
+			<!-- 
+			=============================================
+				Theme Main Menu
+			============================================== 
+			-->
+			<div th:replace="commons.html::main-menu"></div>
+			
+
+
+			<!-- 
+			=============================================
+				Theme Main Hero Banner
+			============================================== 
+			-->
+			<div class="main-hero-banner d-flex align-items-center justify-content-center" style="background-image: url(images/banners/homepage_hero.jpg);">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-8 m-auto">
+							<h1 data-aos="fade-up">Leave with no excuses and travel with no regrets</h1>
+						</div>
+					</div>
+				</div>
+
+				<div class="search-filter">
+					<div class="container">
+						<div class="row">
+							<div class="col-xl-11 m-auto">
+								<div class="main-wrapper">
+									<form th:action="@{/searchProject}">
+										<div class="row">
+											<div class="col-xl-4 col-lg-3 md-mb-20">
+												<div class="dropdown-holder">
+
+												</div>
+											</div>
+
+
+
+											<div class="col-lg-3 col-sm-6 md-mb-20">
+												<div class="people-count">
+													<div class="people-input">
+														<input type="text" name="name" id="total-people"  placeholder="项目名">
+													</div>
+
+												</div> <!-- /.people-count -->
+											</div>
+
+											<div class="col-xl-2 col-lg-3">
+												<button class="theme-main-button m-auto">Search</button>
+											</div>
+										</div>
+									</form>
+								</div> <!-- /.main-wrapper -->
+							</div>
+						</div>
+					</div>
+				</div> <!-- /.search-filter -->
+			</div> <!-- /.main-hero-banner -->
+
+
+
+			<!-- 
+			=============================================
+				Local Experience
+			============================================== 
+			-->
+			<div class="local-experience mt-180 md-mt-250 md-pt-80 sm-pt-150">
+				<div class="container">
+					<div class="theme-title-one text-center">
+						<h2>Your Next Holiday</h2>
+					</div> <!-- /.theme-title-one -->
+
+
+					<div class="row">
+						<div class="col-lg-4" data-aos="fade-up">
+							<div class="block-style-one text-center mt-70 md-mt-50">
+								<img th:src="@{/images/icon/camera.png}" alt="" class="icon">
+								<h4>LOCAL COMMITMENT</h4>
+								<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+							</div>
+						</div>
+						<div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+							<div class="block-style-one text-center mt-70 md-mt-50">
+								<img th:src="@{/images/icon/palm_tree.png}" alt="" class="icon">
+								<h4>ECO-FRIENDLY EXPERIENCES</h4>
+								<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+							</div>
+						</div>
+						<div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+							<div class="block-style-one text-center mt-70 md-mt-50">
+								<img th:src="@{/images/icon/bicycle.png}" alt="" class="icon">
+								<h4>ETHICAL AWARENESS</h4>
+								<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="text-center mt-70 md-mt-50">
+						<a th:href="@{/login.html}" class="theme-main-button lg">Login</a>
+					</div>
+				</div> <!-- /.container -->
+			</div> <!-- /.local-experience -->
+
+
+
+			<div class="destination-details mt-120 md-mt-80">
+				<div class="container destination-info-box">
+					<div class="clearfix">
+						<div class="row">
+
+							<div class="col-lg-8 order-lg-1" th:each="project:${projects}">
+								<div classco="info-box">
+<!--									<h2 class="des-title" th:text="${project.getName()}"></h2>-->
+									<a class="des-title" th:text="${project.getName()}" th:href="@{/detail/} + ${project.getId()}"></a>
+								</div> <!-- /.info-box -->
+								<div class="info-box">
+									<p th:text="${project.getDetails()}"></p>
+
+									<div class="tour-meta-one">
+										<ul class="d-sm-flex justify-content-between align-items-center">
+											<li>
+												<i class="fa fa-clock-o" aria-hidden="true"></i>
+												<span th:text="开始时间"></span>
+												<span th:text="${#dates.format(project.getBegin(),'yyyy-MM-dd')}"></span>
+											</li>
+											<li>
+												<i class="fa fa-clock-o" aria-hidden="true"></i>
+												<span th:text="结束时间"></span>
+												<span th:text="${#dates.format(project.getEnd(),'yyyy-MM-dd')}"></span>
+											</li>
+											<li>
+												<i class="fa fa-users" aria-hidden="true"></i>
+												<span th:text="人均预算"></span>
+												<span th:text="${project.getMoney()}"></span>
+											</li>
+											<li>
+												<i class="fa fa-plane" aria-hidden="true"></i>
+												<span th:text="目的地"></span>
+												<span th:text="${project.getDestination()}"></span>
+											</li>
+										</ul>
+									</div>
+								</div> <!-- /.info-box -->
+							</div> <!-- /.col- -->
+
+						</div>
+					</div>
+				</div> <!-- /.destination-info-box -->
+			</div> <!-- /.destination-details -->
+
+
+
+
+
+
+
+
+
+
+
+			<!-- 
+			=============================================
+				Feature Banner
+			============================================== 
+			-->
+			<div class="feature-banner fancy-bg mt-100 md-mt-80" style="background-image: url(images/banners/homepage_footer.jpg);">
+				<div class="overlay pt-150 pb-100 md-pt-100 md-pb-80">
+					<div class="container text-center">
+						<h2>READY FOR YOUR NEXT ADVENTURE?</h2>
+						<a href="login.html" class="theme-main-button mt-40 md-mt-20">TRAVEL NOW</a>
+					</div>
+				</div> <!-- /.overlay -->
+			</div> <!-- /.feature-banner -->
+
+
+			<!--
+			=============================================
+				Footer
+			==============================================
+			-->
+<div th:replace="commons.html::Footer"></div>
+
+
+
+		<div th:replace="commons.html::footerJs"></div>
+
+
+		</div> <!-- /.main-page-wrapper -->
+	</body>
+</html>

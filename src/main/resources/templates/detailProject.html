@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div th:replace="commons.html::topper"></div>
+
+	<body>
+		<div class="main-page-wrapper">
+
+			<!-- ===================================================
+				Loading Transition
+			==================================================== -->
+			<div th:replace="commons.html::Loading"></div>
+
+
+
+			<!-- 
+			=============================================
+				Theme Main Menu
+			============================================== 
+			-->
+			<div th:replace="commons.html::main-menu"></div>
+			
+
+
+
+
+
+			<!-- 
+			=============================================
+				Article Submission
+			============================================== 
+			-->
+			<div class="article-submission-section">
+				<div class="container">
+					<div class="main-bg">
+						<div class="theme-title-one text-center mb-90 md-mb-50">
+							<h2 th:text="${project.getName()}"></h2>
+							<div class="row">
+								<div class="col-lg-11 m-auto">
+									<p th:text="项目发起人 + ' : ' +${user.getUsername()}"></p>
+									<p th:text="${project.getDetails()}"></p>
+								</div>
+							</div>
+						</div> <!-- /.theme-title-one -->
+
+
+
+						<div class="contribute-form mt-70 md-mt-50">
+							<div class="text-center">
+								<p th:text="地点 + ' : ' + ${project.getDestination()}"></p>
+								<p th:text="人均预算 + ' : ' + ${project.getMoney()}"></p>
+								<p th:text="开始时间 + ' : ' + ${#dates.format(project.getBegin(),'yyyy-MM-dd')}"></p>
+								<p th:text="结束时间 + ' : ' + ${#dates.format(project.getEnd(),'yyyy-MM-dd')}"></p>
+
+								<br>
+
+							</div>
+						</div>
+						<div class="contribute-form mt-70 md-mt-50">
+							<div class="text-center" >
+								<p> 参与活动成员姓名 ---  以及其电话号码</p>
+							</div>
+							<div class="text-center" th:each="u:${users}">
+
+								<p th:text="${u.getRealname()} + '   :   ' + ${u.getTelephone()}"></p>
+
+							</div>
+						</div>
+					</div> <!-- /.main-bg -->
+				</div>
+			</div> <!-- /.article-submission-section -->
+			
+
+
+
+			<!-- 
+			=============================================
+				Footer
+			============================================== 
+			-->
+			<div th:replace="commons.html::Footer"></div>
+
+
+
+
+			<div th:replace="commons.html::footerJs"></div>
+
+		</div> <!-- /.main-page-wrapper -->
+	</body>
+</html>

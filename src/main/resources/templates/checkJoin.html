@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+	<div th:replace="commons.html::topper"></div>
+
+	<body>
+		<div class="main-page-wrapper">
+
+			<!-- ===================================================
+				Loading Transition
+			==================================================== -->
+			<div th:replace="commons.html::Loading"></div>
+
+
+
+			<!-- ===================================================
+				Cart Form
+			==================================================== -->
+			<div class="cart-form">
+				<div class="container">
+					<div class="main-bg">
+						<form th:action="@{/JoinProject}">
+							<h4>确 定 加 入</h4>
+							<p>How would you like to join?</p>
+
+							<ul class="payment-option radio-custome-input mt-40">
+								<li class="mt-35">
+									<div class="pos-r d-flex align-items-center justify-content-between">
+										<input type="radio" name="check" value="1" class="docfile_up_radio" id="paypal" placeholder="">
+										<label for="paypal" class="check-label">加 入</label>
+
+									</div>
+								</li>
+								<li class="mt-35">
+								<li class="mt-35">
+									<div class="pos-r d-flex align-items-center justify-content-between">
+										<input type="radio" name="check" value="0" class="docfile_up_radio" id="paypal" placeholder="">
+										<label for="paypal" class="check-label">我再思考一下</label>
+									</div>
+								</li>
+							</ul> <!-- /.payment-option -->
+							<input type="hidden" name="projectId" th:value="${id}">
+							<div class="mt-40"><button class="theme-main-button m-auto">Submit</button></div>
+						</form>
+					</div>
+				</div>
+			</div>
+
+
+
+
+
+
+
+
+			<div th:replace="commons.html::footerJs"></div>
+
+		</div> <!-- /.main-page-wrapper -->
+	</body>
+</html>

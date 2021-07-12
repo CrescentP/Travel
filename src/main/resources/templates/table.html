@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div th:replace="commons.html::topper"></div>
+
+<body>
+		<div class="main-page-wrapper">
+
+			<!-- ===================================================
+				Loading Transition
+			==================================================== -->
+			<div th:replace="commons.html::Loading"></div>
+
+
+
+
+			<!-- ===================================================
+				Cart Form
+			==================================================== -->
+			<div class="cart-form">
+				<div class="container">
+					<div class="main-bg">
+						<form action="checkout.html" th:action="saveTable" method="post">
+							<h5>请填写你要发布的旅游项目</h5>
+							<p>Please fill in your details below to get started.</p>
+
+							<div class="row">
+								<div class="col-12">
+									<div class="input-wrapper">
+										<label for="">项目名</label>
+										<input type="text" placeholder="项目名" name="name">
+									</div>
+								</div>
+
+								<div class="col-12">
+									<div class="input-wrapper">
+										<label for="">目的地</label>
+										<input type="text" placeholder="目的地" name="destination">
+									</div>
+								</div>
+
+								<div class="col-12">
+									<div class="input-wrapper">
+										<label for="">每人预算</label>
+										<input type="text" placeholder="预算" name="money">
+									</div>
+								</div>
+
+								<div class="col-12">
+									<div class="input-wrapper">
+										<label for="">开始时间</label>
+										<input type="date" name="begin">
+									</div>
+								</div>
+								<div class="col-12">
+									<div class="input-wrapper">
+										<label for="">结束时间</label>
+										<input type="date" name="end">
+									</div>
+								</div>
+
+								<div class="col-12">
+									<div class="input-wrapper">
+										<label for="">详 情</label>
+										<textarea placeholder="旅 行 的 详 细 细 节" name="details"></textarea>
+									</div>
+								</div>
+								<div><input type="hidden" name="principalId" th:value="${session.userSession.getId()}"></div>
+								<div class="mt-40"><button class="theme-main-button m-auto">Submit</button></div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+
+			<div th:replace="commons.html::footerJs"></div>
+
+		</div> <!-- /.main-page-wrapper -->
+	</body>
+</html>

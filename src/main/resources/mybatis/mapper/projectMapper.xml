@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caopeng.travel.mapper.ProjectMapper">
+
+    <insert id="saveProject" parameterType="project">
+        insert into travel.project
+            (name,destination,begin,end,details,principalId,money)
+            values
+            (#{name},#{destination},#{begin},#{end},#{details},#{principalId},#{money});
+    </insert>
+
+    <update id="updateProject">
+        UPDATE travel.project
+            set
+                name = #{name}, destination = #{destination} ,begin = #{begin} , end = #{end} , details = #{details}
+                , principalId = #{principalId} , money = #{money}
+            where id = #{id}
+    </update>
+
+    <delete id="deleteProjectById">
+        delete
+            from travel.project
+        where
+            project.id = #{id}
+    </delete>
+
+    <select id="getProject" parameterType="project" resultType="project">
+        select * from travel.project
+            where
+        name = #{name} and destination = #{destination} and begin = #{begin} and end = #{end} and details = #{details}
+            and principalId = #{principalId} and money = #{money}
+    </select>
+
+    <select id="getMyProjects" resultType="project">
+        SELECT
+            project.*
+        FROM
+            project,
+            user_project
+        WHERE
+            user_project.userID = #{userId}
+          AND user_project.projectId = project.id
+          AND project.principalId = #{userId}
+    </select>
+
+
+    <select id="getProjectById" resultType="com.caopeng.travel.pojo.Project">
+        select
+            *
+        from
+            project
+        where
+            project.id = #{id}
+    </select>
+
+    <select id="getAllProject" resultType="com.caopeng.travel.pojo.Project">
+        select
+            *
+        from
+            project
+    </select>
+
+    <select id="getMyAllProject" resultType="com.caopeng.travel.pojo.Project">
+        SELECT
+            project.*
+        FROM
+            project,
+            user_project
+        WHERE
+            user_project.userID = #{userId}
+          AND user_project.projectId = project.id
+    </select>
+
+    <select id="getProjectByName" resultType="com.caopeng.travel.pojo.Project">
+        SELECT
+            *
+        FROM
+            `project`
+        WHERE
+            project.`name` LIKE CONCAT('%',#{projectName},'%')
+    </select>
+
+</mapper>
